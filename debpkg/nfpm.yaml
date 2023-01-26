@@ -1,0 +1,43 @@
+name: "vgkeydesk-stats-access"
+arch: "amd64"
+platform: "linux"
+version: 0.0.1
+section: "default"
+priority: "extra"
+release: 1
+
+provides:
+- vgkeydesk-conf
+
+maintainer: "Ingmund Ollson <ingmund@proton.me>"
+description: VPNGen keydesk stats access grants
+vendor: "VPNGen"
+homepage: "http://vpngen.org"
+
+contents:
+- dst: /home/_ashot_/.ssh
+  type: dir
+  file_info:
+    mode: 0700
+    owner: _ashot_
+    group: _ashot_
+- src: /etc/keydesk/authorized_keys
+  dst: /home/_ashot_/.ssh/authorized_keys
+  file_info:
+    mode: 0400
+    owner: _ashot_
+    group: _ashot_
+- src: /etc/keydesk/_ashot_
+  dst: /etc/sudoers.d/_ashot_
+  file_info:
+    mode: 0400
+    owner: root
+    group: root
+overrides:
+  deb:
+    scripts:
+      preinstall: /data/src/preinstall.sh
+      postremove: /data/src/postremove.sh
+deb:
+ compression: xz
+
