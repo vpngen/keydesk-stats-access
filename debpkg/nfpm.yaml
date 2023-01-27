@@ -15,20 +15,20 @@ vendor: "VPNGen"
 homepage: "http://vpngen.org"
 
 contents:
-- dst: /home/_ashot_/.ssh
+- dst: /home/_marina_/.ssh
   type: dir
   file_info:
     mode: 0700
-    owner: _ashot_
-    group: _ashot_
+    owner: _marina_
+    group: _marina_
 - src: /etc/keydesk/authorized_keys
-  dst: /home/_ashot_/.ssh/authorized_keys
+  dst: /home/_marina_/.ssh/authorized_keys
   file_info:
     mode: 0400
-    owner: _ashot_
-    group: _ashot_
-- src: /etc/keydesk/_ashot_
-  dst: /etc/sudoers.d/_ashot_
+    owner: _marina_
+    group: _marina_
+- src: /etc/keydesk/_marina_
+  dst: /etc/sudoers.d/_marina_
   file_info:
     mode: 0400
     owner: root
