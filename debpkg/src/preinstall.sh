@@ -1,6 +1,6 @@
 #!/bin/sh
 
-username="_ashot_"
+username="_marina_"
 
 cleanInstall() {
 	printf "\033[32m Pre Install of an clean install\033[0m\n"

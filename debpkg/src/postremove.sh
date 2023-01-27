@@ -1,6 +1,6 @@
 #!/bin/sh
 
-username="_ashot_"
+username="_marina_"
 
 remove() {
         printf "\033[32m Post Remove of a normal remove\033[0m\n"
