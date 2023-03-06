@@ -35,11 +35,11 @@ contents:
     group: root
 overrides:
   deb:
+    conflicts:
+    - vgkeydesk (>= 1.0.0)
     scripts:
       preinstall: /data/src/preinstall.sh
       postremove: /data/src/postremove.sh
 deb:
   compression: xz
-  conflicts:
-    - vgkeydesk (>= 1.0.0)
 
