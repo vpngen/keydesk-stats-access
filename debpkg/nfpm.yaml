@@ -1,13 +1,13 @@
 name: "vgkeydesk-stats-access"
 arch: "amd64"
 platform: "linux"
-version: 0.0.1
+version: 0.0.2
 section: "default"
 priority: "extra"
 release: 2
 
 provides:
-- vgkeydesk-conf
+- vgkeydesk-stats-access
 
 maintainer: "Ingmund Ollson <ingmund@proton.me>"
 description: VPNGen keydesk stats access grants
@@ -39,5 +39,7 @@ overrides:
       preinstall: /data/src/preinstall.sh
       postremove: /data/src/postremove.sh
 deb:
- compression: xz
+  compression: xz
+  conflicts:
+    - vgkeydesk (>= 1.0.0)
 
