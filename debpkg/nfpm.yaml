@@ -1,10 +1,10 @@
 name: "vgkeydesk-stats-access"
 arch: "amd64"
 platform: "linux"
-version: 0.0.2
+version: 1.0.0
 section: "default"
 priority: "extra"
-release: 5
+release: 1
 
 provides:
 - vgkeydesk-stats-access
@@ -27,16 +27,13 @@ contents:
     mode: 0400
     owner: _marina_
     group: _marina_
-- src: /etc/keydesk/keydesk_stats_access_sudoers
-  dst: /etc/sudoers.d/_marina_
-  file_info:
-    mode: 0400
-    owner: root
-    group: root
 overrides:
   deb:
-    conflicts:
-    - vgkeydesk (>= 1.0.0)
+    breaks:
+    - vgkeydesk-all (<< 1.0.0)
+    - vgkeydesk (<< 1.0.0)
+    - vgkeydesk-stats-access (<< 1.0.0)
+    - vgkeydesk-spawner-access (<< 1.0.0)
     scripts:
       preinstall: /data/src/preinstall.sh
       postremove: /data/src/postremove.sh
