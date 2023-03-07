@@ -29,14 +29,14 @@ contents:
     group: _marina_
 overrides:
   deb:
-    breaks:
-    - vgkeydesk-all (<< 1.0.0)
-    - vgkeydesk (<< 1.0.0)
-    - vgkeydesk-stats-access (<< 1.0.0)
-    - vgkeydesk-spawner-access (<< 1.0.0)
     scripts:
       preinstall: /data/src/preinstall.sh
       postremove: /data/src/postremove.sh
 deb:
   compression: xz
+  breaks:
+  - vgkeydesk-all (<< 1.0.0)
+  - vgkeydesk (<< 1.0.0) 
+  - vgkeydesk-stats-access (<< 1.0.0)
+  - vgkeydesk-spawner-access (<< 1.0.0)
 
