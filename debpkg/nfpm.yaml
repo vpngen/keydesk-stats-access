@@ -1,13 +1,13 @@
 name: "vgkeydesk-stats-access"
 arch: "amd64"
 platform: "linux"
-version: 0.0.1
+version: 1.0.0
 section: "default"
 priority: "extra"
-release: 2
+release: 1
 
 provides:
-- vgkeydesk-conf
+- vgkeydesk-stats-access
 
 maintainer: "Ingmund Ollson <ingmund@proton.me>"
 description: VPNGen keydesk stats access grants
@@ -27,17 +27,16 @@ contents:
     mode: 0400
     owner: _marina_
     group: _marina_
-- src: /etc/keydesk/keydesk_stats_access_sudoers
-  dst: /etc/sudoers.d/_marina_
-  file_info:
-    mode: 0400
-    owner: root
-    group: root
 overrides:
   deb:
     scripts:
       preinstall: /data/src/preinstall.sh
       postremove: /data/src/postremove.sh
 deb:
- compression: xz
+  compression: xz
+  breaks:
+  - vgkeydesk-all (<< 1.0.0)
+  - vgkeydesk (<< 1.0.0) 
+  - vgkeydesk-stats-access (<< 1.0.0)
+  - vgkeydesk-spawner-access (<< 1.0.0)
 

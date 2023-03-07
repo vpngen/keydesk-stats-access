@@ -1,6 +1,7 @@
 #!/bin/sh
 
 username="_marina_"
+vgstats_group="vgstats"
 
 cleanInstall() {
 	printf "\033[32m Pre Install of an clean install\033[0m\n"
@@ -11,12 +12,13 @@ cleanInstall() {
 	if id "${username}" >/dev/null 2>&1; then
  		echo "user ${username} already exists"
 	else
-		useradd -p "*" -m "${username}" -s /bin/sh -d "/home/${username}"
+		useradd -p "*" -G "${vgstats_group}" -m "${username}" -s /bin/sh -d "/home/${username}"
 	fi
 }
 
 upgrade() {
     	printf "\033[32m Pre Install of an upgrade\033[0m\n"
+        usermod -a -G "${vgstats_group}" "${username}"
 }
 
 # Step 2, check if this is a clean install or an upgrade
