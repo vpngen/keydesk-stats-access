@@ -92,7 +92,7 @@ if [ "x$1" = "xpkg" ]; then
 
         for keyfile in /etc/__vpngen__/keydesk-stats-access_*.pub; do
                 key=$(cat "${keyfile}")
-                sed "s|{{key}}|${key}|g" < "keydesk-stats-access/debpkg/src/keydesk_stats_access_authorized_keys.tpl" | tee -a authorized_keys
+                sed "s|{{key}}|${key}|g" < "keydesk-stats-access/debpkg/src/keydesk_stats_access_authorized_keys.tpl" >> authorized_keys
         done
 
         go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
