@@ -21,7 +21,7 @@ contents:
     mode: 0700
     owner: _marina_
     group: _marina_
-- src: /etc/keydesk/keydesk_stats_access_authorized_keys
+- src: authorized_keys
   dst: /home/_marina_/.ssh/authorized_keys
   file_info:
     mode: 0400
