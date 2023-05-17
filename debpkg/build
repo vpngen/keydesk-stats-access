@@ -85,11 +85,15 @@ if [ "x$1" = "xpkg" ]; then
         ssh-keyscan -t ed25519 github.com >> /etc/ssh/ssh_known_hosts
 
         git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
-        go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 
-        git clone ssh://git@github.com/vpngen/keydesk-stats-access
+        git clone -b "${BRANCH}" ssh://git@github.com/vpngen/keydesk-stats-access
         
         constract_version "keydesk-stats-access"
+
+        for keyfile in /etc/__vpngen__/keydesk-stats-access_*.pub; do
+                key=$(cat "${keyfile}")
+                sed "s|{{key}}|${key}|g" < "keydesk-stats-access/debpkg/src/keydesk_stats_access_authorized_keys.tpl" >> authorized_keys
+        done
 
         go install github.com/goreleaser/nfpm/v2/cmd/nfpm@latest
 
@@ -116,7 +120,7 @@ docker run --rm \
         -e USER_UID=$(id -u) \
         -e BRANCH=${BRANCH} \
         -e VERMETADATA="${VERMETADATA}" \
-        -v "${CONFDIR}":/etc/keydesk \
+        -v "${CONFDIR}":/etc/__vpngen__ \
         -v ${PWD}:${SHARED_BASE} \
         golang:1.19 "${SHARED_BASE}/build" pkg
 
