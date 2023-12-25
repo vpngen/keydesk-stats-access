@@ -119,6 +119,8 @@ docker run --rm \
         -e USER_UID="$(id -u)" \
         -e BRANCH="${BRANCH}" \
         -e VERMETADATA="${VERMETADATA}" \
+        -e GIT_USER="${GIT_USER}" \
+        -e GIT_PASSWORD="${GIT_PASSWORD}" \
         -v "${CONFDIR}":/etc/__vpngen__ \
         -v "${PWD}":${SHARED_BASE} \
         golang:1.21 "${SHARED_BASE}/build" pkg
